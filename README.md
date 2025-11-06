@@ -1,3 +1,18 @@
+## Zawartość repzytorium
+
+- [data_loader.ipynb](./data_loader.ipynb) — notebook odpowiedzialny za wczytywanie danych (CSV/JSON/API)
+- [model_selector.ipynb](./model_selector.ipynb) — notebook wyboru modelu ML oraz eksportu modeli do plików `.pkl`
+- [lista_funkcji.txt](./lista_funkcji.txt) — opis funkcji systemu i modułów
+- [requirements.txt](./requirements.txt) — lista niezbędnych bibliotek do uruchomienia projektu
+
+## Dokumentacja
+- 📄 Dokument techniczny (Google Drive):  
+https://drive.google.com/… (wklej link)
+- 🧠 Specyfikacja metod:  
+https://drive.google.com/… (wklej link)
+
+
+
 # Zastosowanie wybranych algorytmów uczenia maszynowego w zarządzaniu łańcuchem dostaw
 
 Repozytorium zawiera notebooki użyte w pracy inżynierskiej dotyczącej prognozowania danych czasowych w obszarze łańcucha dostaw.
