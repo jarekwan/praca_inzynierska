@@ -1,15 +1,15 @@
-## Zawartość repzytorium
+## Zawartość repezytorium
 
 - [data_loader.ipynb](./data_loader.ipynb) — notebook odpowiedzialny za wczytywanie danych (CSV/JSON/API)
 - [model_selector.ipynb](./model_selector.ipynb) — notebook wyboru modelu ML oraz eksportu modeli do plików `.pkl`
-- [lista_funkcji.txt](./lista_funkcji.txt) — opis funkcji systemu i modułów
+- [LISTA FUNKCJA EN.txt](./lista_funkcji.txt) — opis funkcji systemu i modułów
 - [requirements.txt](./requirements.txt) — lista niezbędnych bibliotek do uruchomienia projektu
 
-## Dokumentacja
-- 📄 Dokument techniczny (Google Drive):  
-https://drive.google.com/… (wklej link)
-- 🧠 Specyfikacja metod:  
-https://drive.google.com/… (wklej link)
+## google drive
+data_loader : https://colab.research.google.com/drive/1wG8_bLzSnir2xBbHs2usa7noZTXxSCeX?usp=sharing
+
+model_selector : https://colab.research.google.com/drive/1Ohk1MR9Ru_1L0R3WSZDwAWtduU5_0gTm?usp=sharing
+
 
 
 
