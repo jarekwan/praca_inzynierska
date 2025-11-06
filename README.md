@@ -2,7 +2,7 @@
 
 - [data_loader.ipynb](./data_loader.ipynb) — notebook odpowiedzialny za wczytywanie danych (CSV/JSON/API)
 - [model_selector.ipynb](./model_selector.ipynb) — notebook wyboru modelu ML oraz eksportu modeli do plików `.pkl`
-- [LISTA FUNKCJA EN.txt](./lista_funkcji.txt) — opis funkcji systemu i modułów
+- [LISTA FUNKCJA EN.txt](./LISTA FUNKCJA EN.txt) — opis funkcji systemu i modułów
 - [requirements.txt](./requirements.txt) — lista niezbędnych bibliotek do uruchomienia projektu
 
 ## google drive
