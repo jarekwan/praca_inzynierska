@@ -10,7 +10,8 @@ data_loader : https://colab.research.google.com/drive/1wG8_bLzSnir2xBbHs2usa7noZ
 
 model_selector : https://colab.research.google.com/drive/1Ohk1MR9Ru_1L0R3WSZDwAWtduU5_0gTm?usp=sharing
 
-
+SPHINX documentation:
+https://jarekwan.github.io/praca_inzynierska/
 
 
 # Zastosowanie wybranych algorytmów uczenia maszynowego w zarządzaniu łańcuchem dostaw
