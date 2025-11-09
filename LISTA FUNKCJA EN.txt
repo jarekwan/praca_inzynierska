@@ -1,137 +1,317 @@
 
 
-1) Wejście danych
 
-def choose_source() -> (str, str)
-parametry: brak
-co robi: pyta użytkownika, z jakiego źródła chce wczytać dane (csv, json, api) oraz o ścieżkę do pliku lub adres API; oba wybory zapisuje do zmiennych source i path, a następnie je zwraca
-output: source, path — tekst określający typ źródła i lokalizację danych
+# 1) Wejście danych
+def choose_source() -> (str, str):
+    """
+    parametry: brak
+    co robi: pyta użytkownika, z jakiego źródła chce wczytać dane (csv, json, api) oraz o ścieżkę do pliku lub adres API; oba wybory zapisuje do zmiennych source i path, a następnie je zwraca
+    output: source, path — tekst określający typ źródła i lokalizację danych
+    """
 
-def load_data(source: str, path: str) -> pd.DataFrame
-parametry: source, path
-co robi: sprawdza, jaki typ źródła został wybrany (csv, json, api); wczytuje dane z odpowiedniego miejsca — z pliku CSV, z pliku JSON lub z API (gdy path to adres internetowy) i zapisuje je jako data
-output: data — tabela danych w formacie pd.DataFrame
 
-2) Wybór kolumn
+def load_data(source: str, path: str) -> pd.DataFrame:
+    """
+    parametry: source, path
+    co robi: sprawdza, jaki typ źródła został wybrany (csv, json, api); wczytuje dane z odpowiedniego miejsca — z pliku CSV, z pliku JSON lub z API (gdy path to adres internetowy) i zapisuje je jako data
+    output: data — tabela danych w formacie pd.DataFrame
+    """
 
-def select_columns(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: wyświetla listę dostępnych kolumn z tabeli data, pyta użytkownika, które kolumny chce wybrać do dalszej analizy, po czym zostawia tylko te wybrane kolumny
-output: data — tabela danych (pd.DataFrame) zawierająca tylko wybrane kolumny
 
-def detect_types(data: pd.DataFrame) -> dict[str, list[str]]
-parametry: data
-co robi: analizuje typy kolumn w tabeli data i zwraca listy kolumn pogrupowane według typu danych — numeryczne, kategoryczne i daty; ułatwia dalsze przygotowanie danych do modelu
-output: słownik dict[str, list[str]], gdzie klucz to typ danych, a wartość to lista kolumn danego typu
+# 2) Wybór kolumn
+def select_columns_ui(data: pd.DataFrame) -> list[str]:
+    """
+    parametry: data
+    co robi: wyświetla listę kolumn z tabeli data, pyta użytkownika,
+    które kolumny chce wybrać do dalszej analizy i zwraca ich nazwy
+    output: list[str] — nazwy kolumn wybranych przez użytkownika
+    """
 
-def set_date(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: wyświetla kolumny z data, użytkownik wybiera kolumnę z datą; funkcja konwertuje ją na typ datetime, sortuje dane według tej kolumny i — jeśli użytkownik wybierze — uzupełnia brakujące daty oraz brakujące wartości
-w innych kolumnach (np. zerem, poprzednią wartością lub innym sposobem wskazanym przez użytkownika)
-output: data — pd.DataFrame z poprawnie przygotowaną kolumną dat i uzupełnionymi brakami
 
-def clean_data(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: sprawdza, czy w tabeli data występują brakujące wartości (NaN); jeśli tak, wyświetla ich liczbę i pyta użytkownika, jak chce je obsłużyć — może usunąć wiersze z brakami, wypełnić je zerem, poprzednią wartością (ffill),
-średnią kolumny lub zostawić bez zmian; wykonuje wybraną operację na całej tabeli
-output: data — pd.DataFrame po oczyszczeniu z braków lub ich uzupełnieniu
 
-3) Inżynieria cech
+def select_columns(data: pd.DataFrame, selected_cols: list[str]) -> pd.DataFrame:
+    """
+    parametry: data, selected_cols
+    co robi: przyjmuje dane i listę kolumn wybranych w funkcji UI,
+    po czym zwraca tabelę zawierającą tylko te kolumny
+    output: data — pd.DataFrame
+    """
 
-def date_features(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę z datą; funkcja tworzy z niej dodatkowe kolumny z informacjami kalendarzowymi — rok, miesiąc, dzień, dzień tygodnia — które mogą pomóc modelowi
-rozpoznać sezonowość i wzorce czasowe w danych
-output: data — pd.DataFrame z dodanymi kolumnami cech dat (rok, miesiąc, dzień, dzień tygodnia)
 
-def create_lags(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę, dla której mają zostać utworzone opóźnienia (lagi); funkcja pyta, o ile okresów wstecz (np. 1, 2, 7 dni) mają zostać utworzone kolumny pomocnicze i dodaje je do tabeli danych — np. sales_lag_1, sales_lag_7
-output: data — pd.DataFrame z dodanymi kolumnami zawierającymi wartości opóźnione o wskazane okresy
+def detect_types(data: pd.DataFrame) -> dict[str, list[str]]:
+    """
+    parametry: data
+    co robi: analizuje typy kolumn w tabeli data i zwraca listy kolumn pogrupowane według typu danych — numeryczne, kategoryczne i daty; ułatwia dalsze przygotowanie danych do modelu
+    output: słownik dict[str, list[str]], gdzie klucz to typ danych, a wartość to lista kolumn danego typu
+    """
 
-def rolling_stats(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę (np. sprzedaż), dla której chce obliczyć średnie lub sumy z ostatnich dni; funkcja pyta o długość okresu (np. 3, 7, 14 dni) i rodzaj obliczenia
-(średnia, suma, mediana), a następnie dodaje nowe kolumny z wynikami — np. sales_mean_7 lub sales_sum_14; pomaga to modelowi rozpoznać, jak zmienia się sprzedaż w czasie
-output: data — pd.DataFrame z dodanymi kolumnami pokazującymi trend z ostatnich dni
 
-def encode_categories(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: wyświetla kolumny z tabeli data, użytkownik wybiera te, które zawierają tekstowe lub opisowe wartości (np. nazwa produktu, region); funkcja pyta, w jaki sposób zakodować dane — przez utworzenie nowych kolumn
-0/1 (one-hot) lub przez przypisanie każdej kategorii liczby (np. średnia sprzedaż dla danej kategorii); po zakodowaniu wartości zwraca zaktualizowaną tabelę
-output: data — pd.DataFrame z kolumnami tekstowymi zamienionymi na wartości liczbowe
 
-def set_target(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]
-parametry: data
-co robi: wyświetla kolumny z data, użytkownik wybiera kolumnę celu (y) i kolumny cech (X); funkcja oddziela X i y
-output: X, y — pd.DataFrame (cechy) i pd.Series (cel)
+def set_date_ui(data: pd.DataFrame) -> tuple[str, str]:
+    """
+    parametry: data
+    co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę z datą
+    oraz sposób uzupełniania braków (np. zerem, poprzednią wartością lub średnią);
+    zwraca wybory użytkownika
+    output: tuple[str, str] — kolumna daty, metoda uzupełnień
+    """
 
-4) Skalowanie
 
-def scale_data(data: pd.DataFrame) -> pd.DataFrame
-parametry: data
-co robi: wybiera kolumny numeryczne z tabeli data i przekształca ich wartości tak, aby wszystkie miały podobną skalę (np. za pomocą standaryzacji StandardScaler lub innego skalera wskazanego przez użytkownika); pozwala modelowi traktować wszystkie cechy liczbowo w porównywalny sposób
-output: data — pd.DataFrame z przeskalowanymi kolumnami numerycznymi
 
-5) Podział danych i walidacja czasowa
+def set_date(data: pd.DataFrame, date_col: str, fill: str) -> pd.DataFrame:
+    """
+    parametry: data, date_col, fill
+    co robi: konwertuje wskazaną kolumnę na datetime, sortuje dane według niej
+    i uzupełnia braki zgodnie z metodą wybraną przez użytkownika
+    output: data — pd.DataFrame
+    """
 
-def split_time(X: pd.DataFrame, y: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]
-parametry: X, y
-co robi: dzieli dane chronologicznie na zbiór treningowy i testowy; użytkownik sam określa, jaką część danych przeznaczyć na test (np. podając liczbę dni, tygodni lub procent);
-funkcja tworzy i zwraca odpowiednie zestawy danych
-output: X_train, X_test, y_train, y_test — dane treningowe i testowe dla cech i zmiennej celu
 
-6) Modele (tradycyjne i ML)
 
-def create_traditional_model() -> object
-parametry: brak
-co robi: pyta użytkownika, jaki model tradycyjny wybrać (np. ARIMA, Holt-Winters) oraz o jego parametry; tworzy i zwraca model
-output: traditional_model — obiekt wybranego modelu tradycyjnego
+def clean_data_ui(data: pd.DataFrame) -> str:
+    """
+    parametry: data
+    co robi: sprawdza, czy w tabeli data występują brakujące wartości (NaN);
+    jeśli tak, wyświetla ich liczbę i pyta użytkownika, jak chce je obsłużyć —
+    może wybrać: drop, zero, ffill, mean lub none; zwraca wybór użytkownika
+    output: str — metoda czyszczenia danych wybrana przez użytkownika
+    """
 
-def create_ml_model() -> object
-parametry: brak
-co robi: pyta użytkownika, jaki model uczenia maszynowego wybrać (np. SVR, Random Forest, XGB, Lasso, Ridge) oraz o jego parametry; tworzy i zwraca model
-output: ml_model — obiekt wybranego modelu ML
 
-7) Trening i prognozowanie
 
-def train_ml(ml_model, X_train: pd.DataFrame, y_train: pd.Series) -> object
-parametry: ml_model, X_train, y_train
-co robi: dopasowuje model ML na zbiorze treningowym
-output: trained_ml_model
+def clean_data(data: pd.DataFrame, method: str) -> pd.DataFrame:
+    """
+    parametry: data, method
+    co robi: na podstawie metody przekazanej z UI wykonuje czyszczenie danych:
+    drop — usuwa wiersze z brakami,
+    zero — wypełnia zerem,
+    ffill — wypełnia poprzednią wartością,
+    mean — wypełnia średnią,
+    none — bez zmian
+    output: data — pd.DataFrame
+    """
 
-def predict_ml(ml_model, X_test: pd.DataFrame) -> np.ndarray
-parametry: ml_model, X_test
-co robi: generuje prognozy modelu ML na zbiorze testowym
-output: y_pred_ml (np.ndarray)
 
-def train_traditional(traditional_model, y_train: pd.Series) -> object
-parametry: traditional_model, y_train
-co robi: dopasowuje model tradycyjny na serii treningowej
-output: trained_traditional_model
+# 3) Inżynieria cech
+def date_features_ui(data: pd.DataFrame) -> str:
+    """
+    parametry: data
+    co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę z datą,
+    z której mają zostać utworzone dodatkowe kolumny z cechami kalendarzowymi;
+    zwraca nazwę wybranej kolumny
+    output: str — nazwa kolumny daty wybranej przez użytkownika
+    """
 
-def predict_traditional(traditional_model, h: int) -> np.ndarray
-parametry: traditional_model, h (np. h = długość y_test)
-co robi: generuje prognozę na h kolejnych okresów (dla porównania z y_test)
-output: y_pred_traditional (np.ndarray)
 
-8) Ocena modeli i porównanie wyników
 
-def tune_ml_model(ml_model, X_train: pd.DataFrame, y_train: pd.Series) -> object
-parametry: ml_model, X_train, y_train
-co robi: pyta użytkownika, jakie wartości parametrów chce sprawdzić (np. liczba drzew, głębokość modelu); uruchamia kilka wersji modelu z różnymi ustawieniami i wybiera tę, która najlepiej działa na danych treningowych
-output: best_ml_model — model ML z najlepszymi parametrami
+def date_features(data: pd.DataFrame, date_col: str) -> pd.DataFrame:
+    """
+    parametry: data, date_col
+    co robi: na podstawie kolumny daty tworzy dodatkowe kolumny:
+    rok, miesiąc, dzień, dzień tygodnia; dodaje je do tabeli data
+    output: data — pd.DataFrame
+    """
 
-def evaluate_model(y_test: pd.Series, y_pred: np.ndarray) -> dict[str, float]
-parametry: y_test, y_pred
-co robi: porównuje prognozy z rzeczywistymi wartościami i oblicza cztery podstawowe miary dokładności:
-MAE — średni błąd bezwzględny,
-RMSE — pierwiastek średniego błędu kwadratowego,
-MAPE — średni procentowy błąd,
-R² — miara dopasowania modelu
-output: metrics — słownik z nazwami miar i ich wartościami
 
-def compare_all(y_test: pd.Series, predictions: dict[str, np.ndarray]) -> pd.DataFrame
-parametry: y_test, predictions
-co robi: oblicza miary dokładności (MAE, RMSE, MAPE, R²) dla każdego modelu z osobna i tworzy wspólną tabelę porównawczą, która pokazuje, który model działa najlepiej
-output: comparison_table — pd.DataFrame z wynikami wszystkich modeli
+
+def create_lags_ui(data: pd.DataFrame) -> tuple[str, list[int]]:
+    """
+    parametry: data
+    co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę,
+    dla której mają zostać utworzone opóźnienia (lagi), oraz podaje listę
+    okresów wstecz (np. 1, 2, 7); zwraca te wybory
+    output: tuple[str, list[int]] — nazwa kolumny i lista wartości opóźnień
+    """
+
+
+
+def create_lags(data: pd.DataFrame, col: str, lags: list[int]) -> pd.DataFrame:
+    """
+    parametry: data, col, lags
+    co robi: dla wskazanej kolumny tworzy dodatkowe kolumny pomocnicze
+    zawierające wartości opóźnione o określoną liczbę okresów wstecz,
+    np. sales_lag_1, sales_lag_7
+    output: data — pd.DataFrame
+    """
+
+
+def rolling_stats_ui(data: pd.DataFrame) -> tuple[str, int, str]:
+    """
+    parametry: data
+    co robi: wyświetla kolumny, użytkownik wybiera kolumnę (np. sprzedaż),
+    długość okna (np. 3, 7, 14) i rodzaj obliczenia (mean, sum, median);
+    zwraca te trzy wybory
+    output: tuple[str, int, str] — kolumna, okno, rodzaj obliczenia
+    """
+
+
+
+def rolling_stats(data: pd.DataFrame, col: str, win: int, agg: str) -> pd.DataFrame:
+    """
+    parametry: data, col, win, agg
+    co robi: oblicza statystyki kroczące dla kolumny col, z oknem win,
+    używając metody agg (mean, sum, median); dodaje kolumnę np.
+    sales_mean_7 lub sales_sum_14
+    output: data — pd.DataFrame
+    """
+
+
+def encode_categories_ui(data: pd.DataFrame) -> tuple[list[str], str]:
+    """
+    parametry: data
+    co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumny
+    zawierające wartości tekstowe oraz sposób kodowania: onehot lub mean;
+    zwraca oba wybory
+    output: tuple[list[str], str] — lista kolumn, metoda kodowania
+    """
+
+
+
+def encode_categories(data: pd.DataFrame, cols: list[str], method: str) -> pd.DataFrame:
+    """
+    parametry: data, cols, method
+    co robi: koduje wybrane kolumny tekstowe zgodnie z metodą:
+    onehot — tworzy kolumny 0/1 dla każdej kategorii,
+    mean — zastępuje kategorię średnią wartości zależnej kolumny
+    output: data — pd.DataFrame
+    """
+
+
+def set_target(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
+    """
+    parametry: data
+    co robi: wyświetla kolumny z data, użytkownik wybiera kolumnę celu (y) i kolumny cech (X); funkcja oddziela X i y
+    output: X, y — pd.DataFrame (cechy) i pd.Series (cel)
+    """
+
+
+# 4) Skalowanie
+def scale_data_ui(data: pd.DataFrame) -> list[str]:
+    """
+    parametry: data
+    co robi: wyświetla kolumny numeryczne z tabeli data i pyta użytkownika,
+    które kolumny chce przeskalować; zwraca listę wybranych kolumn
+    output: list[str] — kolumny do skalowania
+    """
+
+
+
+def scale_data(data: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
+    """
+    parametry: data, cols
+    co robi: przekształca wartości w wybranych kolumnach tak, aby wszystkie
+    miały podobną skalę (np. standaryzacja, normalizacja); operacja nie
+    obejmuje komunikacji z użytkownikiem
+    output: data — pd.DataFrame z przeskalowanymi kolumnami numerycznymi
+    """
+
+
+# 5) Podział danych i walidacja czasowa
+def split_time_ui() -> float:
+    """
+    parametry: brak
+    co robi: pyta użytkownika, jaki procent danych chce przeznaczyć na zbiór testowy
+    (np. 0.2 oznacza 20% danych testowych); zwraca wybraną wartość
+    output: float — procent danych testowych
+    """
+
+
+
+def split_time(X: pd.DataFrame, y: pd.Series, test_size: float) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
+    """
+    parametry: X, y, test_size
+    co robi: dzieli dane chronologicznie na zbiory treningowy i testowy
+    zgodnie z wartością test_size przekazaną z funkcji UI
+    output: X_train, X_test, y_train, y_test — dane treningowe i testowe
+    """
+
+
+# 6) Modele (tradycyjne i ML)
+def create_traditional_model() -> object:
+    """
+    parametry: brak
+    co robi: pyta użytkownika, jaki model tradycyjny wybrać (np. ARIMA, Holt-Winters) oraz o jego parametry; tworzy i zwraca model
+    output: traditional_model — obiekt wybranego modelu tradycyjnego
+    """
+
+
+def create_ml_model() -> object:
+    """
+    parametry: brak
+    co robi: pyta użytkownika, jaki model uczenia maszynowego wybrać (np. SVR, Random Forest, XGB, Lasso, Ridge) oraz o jego parametry; tworzy i zwraca model
+    output: ml_model — obiekt wybranego modelu ML
+    """
+
+
+# 7) Trening i prognozowanie
+def train_ml(ml_model, X_train: pd.DataFrame, y_train: pd.Series) -> object:
+    """
+    parametry: ml_model, X_train, y_train
+    co robi: dopasowuje model ML na zbiorze treningowym
+    output: trained_ml_model
+    """
+
+
+def predict_ml(ml_model, X_test: pd.DataFrame) -> np.ndarray:
+    """
+    parametry: ml_model, X_test
+    co robi: generuje prognozy modelu ML na zbiorze testowym
+    output: y_pred_ml (np.ndarray)
+    """
+
+
+def train_traditional(traditional_model, y_train: pd.Series) -> object:
+    """
+    parametry: traditional_model, y_train
+    co robi: dopasowuje model tradycyjny na serii treningowej
+    output: trained_traditional_model
+    """
+
+
+def predict_traditional(traditional_model, h: int) -> np.ndarray:
+    """
+    parametry: traditional_model, h (np. h = długość y_test)
+    co robi: generuje prognozę na h kolejnych okresów (dla porównania z y_test)
+    output: y_pred_traditional (np.ndarray)
+    """
+
+
+# 8) Ocena modeli i porównanie wyników
+def tune_ml_model_ui(ml_model) -> dict[str, list]:
+    """
+    parametry: ml_model
+    co robi: pyta użytkownika, które parametry modelu chce stroić oraz
+    jakie wartości sprawdzić; tworzy i zwraca słownik siatki parametrów
+    output: dict[str, list] — siatka parametrów do strojenia
+    """
+
+
+
+def tune_ml_model(ml_model, X_train: pd.DataFrame, y_train: pd.Series, param_grid: dict[str, list]) -> object:
+    """
+    parametry: ml_model, X_train, y_train, param_grid
+    co robi: uruchamia trenowanie wielu konfiguracji modelu zgodnie z
+    siatką param_grid i wybiera konfigurację o najlepszym wyniku na
+    zbiorze treningowym lub walidacyjnym
+    output: object — best_ml_model
+    """
+
+
+def evaluate_model(y_test: pd.Series, y_pred: np.ndarray) -> dict[str, float]:
+    """
+    parametry: y_test, y_pred
+    co robi: porównuje prognozy z rzeczywistymi wartościami i oblicza cztery podstawowe miary dokładności:
+    MAE — średni błąd bezwzględny,
+    RMSE — pierwiastek średniego błędu kwadratowego,
+    MAPE — średni procentowy błąd,
+    R² — miara dopasowania modelu
+    output: metrics — słownik z nazwami miar i ich wartościami
+    """
+
+
+def compare_all(y_test: pd.Series, predictions: dict[str, np.ndarray]) -> pd.DataFrame:
+    """
+    parametry: y_test, predictions
+    co robi: oblicza miary dokładności (MAE, RMSE, MAPE, R²) dla każdego modelu z osobna i tworzy wspólną tabelę porównawczą, która pokazuje, który model działa najlepiej
+    output: comparison_table — pd.DataFrame z wynikami wszystkich modeli
+    """
