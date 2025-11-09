@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pl" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>funkcje module &mdash; Praca Inżynierska 1.0 - dokumentacja</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=331e28ce"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4c397337"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+    <link rel="prev" title="kod package" href="kod.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Praca Inżynierska
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Szukaj" aria-label="Szukaj" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Spis treści:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="wstep.html">Wstęp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teoria.html">Podstawy teoretyczne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacja.html">Implementacja</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wyniki.html">Wyniki eksperymentów</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliografia.html">Bibliografia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">kod</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">funkcje module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.choose_source"><code class="docutils literal notranslate"><span class="pre">choose_source()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.clean_data"><code class="docutils literal notranslate"><span class="pre">clean_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.clean_data_ui"><code class="docutils literal notranslate"><span class="pre">clean_data_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.compare_all"><code class="docutils literal notranslate"><span class="pre">compare_all()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.create_lags"><code class="docutils literal notranslate"><span class="pre">create_lags()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.create_lags_ui"><code class="docutils literal notranslate"><span class="pre">create_lags_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.create_ml_model"><code class="docutils literal notranslate"><span class="pre">create_ml_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.create_traditional_model"><code class="docutils literal notranslate"><span class="pre">create_traditional_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.date_features"><code class="docutils literal notranslate"><span class="pre">date_features()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.date_features_ui"><code class="docutils literal notranslate"><span class="pre">date_features_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.detect_types"><code class="docutils literal notranslate"><span class="pre">detect_types()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.encode_categories"><code class="docutils literal notranslate"><span class="pre">encode_categories()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.encode_categories_ui"><code class="docutils literal notranslate"><span class="pre">encode_categories_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.evaluate_model"><code class="docutils literal notranslate"><span class="pre">evaluate_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.predict_ml"><code class="docutils literal notranslate"><span class="pre">predict_ml()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.predict_traditional"><code class="docutils literal notranslate"><span class="pre">predict_traditional()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.rolling_stats"><code class="docutils literal notranslate"><span class="pre">rolling_stats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.rolling_stats_ui"><code class="docutils literal notranslate"><span class="pre">rolling_stats_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.scale_data"><code class="docutils literal notranslate"><span class="pre">scale_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.scale_data_ui"><code class="docutils literal notranslate"><span class="pre">scale_data_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.select_columns"><code class="docutils literal notranslate"><span class="pre">select_columns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.select_columns_ui"><code class="docutils literal notranslate"><span class="pre">select_columns_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.set_date"><code class="docutils literal notranslate"><span class="pre">set_date()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.set_date_ui"><code class="docutils literal notranslate"><span class="pre">set_date_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.set_target"><code class="docutils literal notranslate"><span class="pre">set_target()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.split_time"><code class="docutils literal notranslate"><span class="pre">split_time()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.split_time_ui"><code class="docutils literal notranslate"><span class="pre">split_time_ui()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.train_ml"><code class="docutils literal notranslate"><span class="pre">train_ml()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.train_traditional"><code class="docutils literal notranslate"><span class="pre">train_traditional()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.tune_ml_model"><code class="docutils literal notranslate"><span class="pre">tune_ml_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funkcje.tune_ml_model_ui"><code class="docutils literal notranslate"><span class="pre">tune_ml_model_ui()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Praca Inżynierska</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">funkcje module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/funkcje.rst.txt" rel="nofollow"> Zobacz źródło strony</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-funkcje">
+<span id="funkcje-module"></span><h1>funkcje module<a class="headerlink" href="#module-funkcje" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.choose_source">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">choose_source</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.choose_source" title="Link to this definition"></a></dt>
+<dd><p>parametry: brak
+co robi: pyta użytkownika, z jakiego źródła chce wczytać dane (csv, json, api) oraz o ścieżkę do pliku lub adres API; oba wybory zapisuje do zmiennych source i path, a następnie je zwraca
+output: source, path — tekst określający typ źródła i lokalizację danych</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.clean_data">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">clean_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.clean_data" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, method
+co robi: na podstawie metody przekazanej z UI wykonuje czyszczenie danych:
+drop — usuwa wiersze z brakami,
+zero — wypełnia zerem,
+ffill — wypełnia poprzednią wartością,
+mean — wypełnia średnią,
+none — bez zmian
+output: data — pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.clean_data_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">clean_data_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.clean_data_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: sprawdza, czy w tabeli data występują brakujące wartości (NaN);
+jeśli tak, wyświetla ich liczbę i pyta użytkownika, jak chce je obsłużyć —
+może wybrać: drop, zero, ffill, mean lub none; zwraca wybór użytkownika
+output: str — metoda czyszczenia danych wybrana przez użytkownika</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.compare_all">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">compare_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.compare_all" title="Link to this definition"></a></dt>
+<dd><p>parametry: y_test, predictions
+co robi: oblicza miary dokładności (MAE, RMSE, MAPE, R²) dla każdego modelu z osobna i tworzy wspólną tabelę porównawczą, która pokazuje, który model działa najlepiej
+output: comparison_table — pd.DataFrame z wynikami wszystkich modeli</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.create_lags">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">create_lags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.create_lags" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, col, lags
+co robi: dla wskazanej kolumny tworzy dodatkowe kolumny pomocnicze
+zawierające wartości opóźnione o określoną liczbę okresów wstecz,
+np. sales_lag_1, sales_lag_7
+output: data — pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.create_lags_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">create_lags_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.create_lags_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę,
+dla której mają zostać utworzone opóźnienia (lagi), oraz podaje listę
+okresów wstecz (np. 1, 2, 7); zwraca te wybory
+output: tuple[str, list[int]] — nazwa kolumny i lista wartości opóźnień</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.create_ml_model">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">create_ml_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.create_ml_model" title="Link to this definition"></a></dt>
+<dd><p>parametry: brak
+co robi: pyta użytkownika, jaki model uczenia maszynowego wybrać (np. SVR, Random Forest, XGB, Lasso, Ridge) oraz o jego parametry; tworzy i zwraca model
+output: ml_model — obiekt wybranego modelu ML</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.create_traditional_model">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">create_traditional_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.create_traditional_model" title="Link to this definition"></a></dt>
+<dd><p>parametry: brak
+co robi: pyta użytkownika, jaki model tradycyjny wybrać (np. ARIMA, Holt-Winters) oraz o jego parametry; tworzy i zwraca model
+output: traditional_model — obiekt wybranego modelu tradycyjnego</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.date_features">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">date_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.date_features" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, date_col
+co robi: na podstawie kolumny daty tworzy dodatkowe kolumny:
+rok, miesiąc, dzień, dzień tygodnia; dodaje je do tabeli data
+output: data — pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.date_features_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">date_features_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.date_features_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę z datą,
+z której mają zostać utworzone dodatkowe kolumny z cechami kalendarzowymi;
+zwraca nazwę wybranej kolumny
+output: str — nazwa kolumny daty wybranej przez użytkownika</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.detect_types">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">detect_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.detect_types" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: analizuje typy kolumn w tabeli data i zwraca listy kolumn pogrupowane według typu danych — numeryczne, kategoryczne i daty; ułatwia dalsze przygotowanie danych do modelu
+output: słownik dict[str, list[str]], gdzie klucz to typ danych, a wartość to lista kolumn danego typu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.encode_categories">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">encode_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.encode_categories" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, cols, method
+co robi: koduje wybrane kolumny tekstowe zgodnie z metodą:
+onehot — tworzy kolumny 0/1 dla każdej kategorii,
+mean — zastępuje kategorię średnią wartości zależnej kolumny
+output: data — pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.encode_categories_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">encode_categories_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.encode_categories_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumny
+zawierające wartości tekstowe oraz sposób kodowania: onehot lub mean;
+zwraca oba wybory
+output: tuple[list[str], str] — lista kolumn, metoda kodowania</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.evaluate_model">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">evaluate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.evaluate_model" title="Link to this definition"></a></dt>
+<dd><p>parametry: y_test, y_pred
+co robi: porównuje prognozy z rzeczywistymi wartościami i oblicza cztery podstawowe miary dokładności:
+MAE — średni błąd bezwzględny,
+RMSE — pierwiastek średniego błędu kwadratowego,
+MAPE — średni procentowy błąd,
+R² — miara dopasowania modelu
+output: metrics — słownik z nazwami miar i ich wartościami</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.load_data">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.load_data" title="Link to this definition"></a></dt>
+<dd><p>parametry: source, path
+co robi: sprawdza, jaki typ źródła został wybrany (csv, json, api); wczytuje dane z odpowiedniego miejsca — z pliku CSV, z pliku JSON lub z API (gdy path to adres internetowy) i zapisuje je jako data
+output: data — tabela danych w formacie pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.predict_ml">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">predict_ml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ml_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.predict_ml" title="Link to this definition"></a></dt>
+<dd><p>parametry: ml_model, X_test
+co robi: generuje prognozy modelu ML na zbiorze testowym
+output: y_pred_ml (np.ndarray)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.predict_traditional">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">predict_traditional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">traditional_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.predict_traditional" title="Link to this definition"></a></dt>
+<dd><p>parametry: traditional_model, h (np. h = długość y_test)
+co robi: generuje prognozę na h kolejnych okresów (dla porównania z y_test)
+output: y_pred_traditional (np.ndarray)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.rolling_stats">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">rolling_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.rolling_stats" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, col, win, agg
+co robi: oblicza statystyki kroczące dla kolumny col, z oknem win,
+używając metody agg (mean, sum, median); dodaje kolumnę np.
+sales_mean_7 lub sales_sum_14
+output: data — pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.rolling_stats_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">rolling_stats_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.rolling_stats_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla kolumny, użytkownik wybiera kolumnę (np. sprzedaż),
+długość okna (np. 3, 7, 14) i rodzaj obliczenia (mean, sum, median);
+zwraca te trzy wybory
+output: tuple[str, int, str] — kolumna, okno, rodzaj obliczenia</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.scale_data">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">scale_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.scale_data" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, cols
+co robi: przekształca wartości w wybranych kolumnach tak, aby wszystkie
+miały podobną skalę (np. standaryzacja, normalizacja); operacja nie
+obejmuje komunikacji z użytkownikiem
+output: data — pd.DataFrame z przeskalowanymi kolumnami numerycznymi</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.scale_data_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">scale_data_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.scale_data_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla kolumny numeryczne z tabeli data i pyta użytkownika,
+które kolumny chce przeskalować; zwraca listę wybranych kolumn
+output: list[str] — kolumny do skalowania</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.select_columns">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">select_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_cols</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.select_columns" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, selected_cols
+co robi: przyjmuje dane i listę kolumn wybranych w funkcji UI,
+po czym zwraca tabelę zawierającą tylko te kolumny
+output: data — pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.select_columns_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">select_columns_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.select_columns_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla listę kolumn z tabeli data, pyta użytkownika,
+które kolumny chce wybrać do dalszej analizy i zwraca ich nazwy
+output: list[str] — nazwy kolumn wybranych przez użytkownika</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.set_date">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">set_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.set_date" title="Link to this definition"></a></dt>
+<dd><p>parametry: data, date_col, fill
+co robi: konwertuje wskazaną kolumnę na datetime, sortuje dane według niej
+i uzupełnia braki zgodnie z metodą wybraną przez użytkownika
+output: data — pd.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.set_date_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">set_date_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.set_date_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla kolumny z tabeli data, użytkownik wybiera kolumnę z datą
+oraz sposób uzupełniania braków (np. zerem, poprzednią wartością lub średnią);
+zwraca wybory użytkownika
+output: tuple[str, str] — kolumna daty, metoda uzupełnień</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.set_target">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">set_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.set_target" title="Link to this definition"></a></dt>
+<dd><p>parametry: data
+co robi: wyświetla kolumny z data, użytkownik wybiera kolumnę celu (y) i kolumny cech (X); funkcja oddziela X i y
+output: X, y — pd.DataFrame (cechy) i pd.Series (cel)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.split_time">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">split_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.split_time" title="Link to this definition"></a></dt>
+<dd><p>parametry: X, y, test_size
+co robi: dzieli dane chronologicznie na zbiory treningowy i testowy
+zgodnie z wartością test_size przekazaną z funkcji UI
+output: X_train, X_test, y_train, y_test — dane treningowe i testowe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.split_time_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">split_time_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.split_time_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: brak
+co robi: pyta użytkownika, jaki procent danych chce przeznaczyć na zbiór testowy
+(np. 0.2 oznacza 20% danych testowych); zwraca wybraną wartość
+output: float — procent danych testowych</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.train_ml">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">train_ml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ml_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.train_ml" title="Link to this definition"></a></dt>
+<dd><p>parametry: ml_model, X_train, y_train
+co robi: dopasowuje model ML na zbiorze treningowym
+output: trained_ml_model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.train_traditional">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">train_traditional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">traditional_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.train_traditional" title="Link to this definition"></a></dt>
+<dd><p>parametry: traditional_model, y_train
+co robi: dopasowuje model tradycyjny na serii treningowej
+output: trained_traditional_model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.tune_ml_model">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">tune_ml_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ml_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_grid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.tune_ml_model" title="Link to this definition"></a></dt>
+<dd><p>parametry: ml_model, X_train, y_train, param_grid
+co robi: uruchamia trenowanie wielu konfiguracji modelu zgodnie z
+siatką param_grid i wybiera konfigurację o najlepszym wyniku na
+zbiorze treningowym lub walidacyjnym
+output: object — best_ml_model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funkcje.tune_ml_model_ui">
+<span class="sig-prename descclassname"><span class="pre">funkcje.</span></span><span class="sig-name descname"><span class="pre">tune_ml_model_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ml_model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funkcje.tune_ml_model_ui" title="Link to this definition"></a></dt>
+<dd><p>parametry: ml_model
+co robi: pyta użytkownika, które parametry modelu chce stroić oraz
+jakie wartości sprawdzić; tworzy i zwraca słownik siatki parametrów
+output: dict[str, list] — siatka parametrów do strojenia</p>
+<dl class="field-list simple">
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kod.html" class="btn btn-neutral float-left" title="kod package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Poprzedni</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Prawa zastrzeżone .</p>
+  </div>
+
+  Zbudowano w <a href="https://www.sphinx-doc.org/">Sphinx</a> używając
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    dostarczone przez <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
