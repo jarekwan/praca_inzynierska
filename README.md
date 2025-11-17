@@ -10,7 +10,7 @@ data_loader : https://colab.research.google.com/drive/1wG8_bLzSnir2xBbHs2usa7noZ
 
 model_selector : https://colab.research.google.com/drive/1Ohk1MR9Ru_1L0R3WSZDwAWtduU5_0gTm?usp=sharing
 
-choose_source+data_load:https://colab.research.google.com/drive/1RsvYSZt4mYcYKe7DBJzypPiwNs3SK96o?usp=sharing
+choose_source:https://colab.research.google.com/drive/1RsvYSZt4mYcYKe7DBJzypPiwNs3SK96o?usp=sharing
 
 SPHINX documentation:
 https://jarekwan.github.io/praca_inzynierska/
