@@ -6,9 +6,7 @@
 - [requirements.txt](./requirements.txt) — lista niezbędnych bibliotek do uruchomienia projektu
 
 ## google drive
-data_loader : https://colab.research.google.com/drive/1wG8_bLzSnir2xBbHs2usa7noZTXxSCeX?usp=sharing
-
-model_selector : https://colab.research.google.com/drive/1Ohk1MR9Ru_1L0R3WSZDwAWtduU5_0gTm?usp=sharing
+main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 choose_source:https://colab.research.google.com/drive/1RsvYSZt4mYcYKe7DBJzypPiwNs3SK96o?usp=sharing
 
