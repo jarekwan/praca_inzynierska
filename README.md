@@ -20,6 +20,8 @@ set_date:https://colab.research.google.com/drive/1qhdOHdGQvIchXEick3mdlqnMJUBPUP
 
 clean_data:https://colab.research.google.com/drive/1Ecrpnrne4FPEPmICrDA2DdXFdhc95MAF?usp=sharing
 
+date_features:https://colab.research.google.com/drive/1VpSqprZPl_R18vdG-eEc9Gb91vWN8Gs8?usp=sharing
+
 SPHINX documentation:
 https://jarekwan.github.io/praca_inzynierska/
 
