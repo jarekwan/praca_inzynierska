@@ -18,6 +18,8 @@ detect_types:https://colab.research.google.com/drive/190cyoaw9aeY4cJ7x2w-KUSkm60
 
 set_date:https://colab.research.google.com/drive/1qhdOHdGQvIchXEick3mdlqnMJUBPUPVO?usp=sharing
 
+clean_data:https://colab.research.google.com/drive/1Ecrpnrne4FPEPmICrDA2DdXFdhc95MAF?usp=sharing
+
 SPHINX documentation:
 https://jarekwan.github.io/praca_inzynierska/
 
