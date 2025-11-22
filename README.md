@@ -27,6 +27,8 @@ rolling_stats:https://colab.research.google.com/drive/1I8PT51qslGNHspt-xJuMuaT2I
 
 encode_categories:https://colab.research.google.com/drive/1i2ZEChLOAt6prt-Ae-60AEx65epysHXn?usp=sharing
 
+set_target:https://colab.research.google.com/drive/1d3JLI01nycbGmBTpAZyYxN80_J97LQDY?usp=sharing
+
 SPHINX documentation:
 https://jarekwan.github.io/praca_inzynierska/
 
