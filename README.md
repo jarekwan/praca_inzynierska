@@ -1,7 +1,6 @@
 ## Zawartość repezytorium
 
-- [data_loader.ipynb](./data_loader.ipynb) — notebook odpowiedzialny za wczytywanie danych (CSV/JSON/API)
-- [model_selector.ipynb](./model_selector.ipynb) — notebook wyboru modelu ML oraz eksportu modeli do plików `.pkl`
+
 -  [LISTA FUNKCJA EN.txt](./LISTA%20FUNKCJA%20EN.txt) — opis funkcji systemu (wersja EN)
 - [requirements.txt](./requirements.txt) — lista niezbędnych bibliotek do uruchomienia projektu
 
