@@ -24,6 +24,8 @@ date_features:https://colab.research.google.com/drive/1VpSqprZPl_R18vdG-eEc9Gb91
 
 create_lags:https://colab.research.google.com/drive/1dLdI0QJWslERqHVul7uZYEYWYQo9Hcf2?usp=sharing
 
+encode_categories:https://colab.research.google.com/drive/1i2ZEChLOAt6prt-Ae-60AEx65epysHXn?usp=sharing
+
 SPHINX documentation:
 https://jarekwan.github.io/praca_inzynierska/
 
