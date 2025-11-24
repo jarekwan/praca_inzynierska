@@ -5,7 +5,7 @@
 - [requirements.txt](./requirements.txt) — lista niezbędnych bibliotek do uruchomienia projektu
 
 ## google drive
-main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
+
 
 1. choose_source:https://colab.research.google.com/drive/1RsvYSZt4mYcYKe7DBJzypPiwNs3SK96o?usp=sharing
 
