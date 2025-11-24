@@ -44,8 +44,7 @@ https://jarekwan.github.io/praca_inzynierska/
 Repozytorium zawiera notebooki użyte w pracy inżynierskiej dotyczącej prognozowania danych czasowych w obszarze łańcucha dostaw.
 
 ## Zawartość
-- `data_loader.ipynb` — wczytywanie danych (CSV/JSON/API)
-- `model_selector.ipynb` — wybór modelu ML i zapis do `.pkl`
+
 - `lista_funkcji.txt` — opis funkcji systemu
 - `requirements.txt` — wymagane biblioteki
 
