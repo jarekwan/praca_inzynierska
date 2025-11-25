@@ -33,6 +33,8 @@
 
 13. split_time: https://colab.research.google.com/drive/1mEqVNvyDMUiC63AKcYHiCQD_4WCFW_nl?usp=sharing
 
+14. create_traditional_model: https://colab.research.google.com/drive/1Lz6Azw4pHr6C4sH7EumHbGZ6pQ1y1qW2?usp=sharing
+
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 SPHINX documentation:
