@@ -37,6 +37,8 @@
 
 15. create_ml_model_ui: https://colab.research.google.com/drive/1pyDBwZ21bWl2tzxeRvt2J8nUC027tFFA?usp=sharing
 
+16. train_ml: https://colab.research.google.com/drive/15J6-yMZTs5qPQVHNWCcg2Tpj9BkclLnO?usp=sharing
+
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 SPHINX documentation:
