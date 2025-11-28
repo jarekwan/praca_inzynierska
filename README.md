@@ -39,6 +39,8 @@
 
 16. train_ml: https://colab.research.google.com/drive/15J6-yMZTs5qPQVHNWCcg2Tpj9BkclLnO?usp=sharing
 
+17. predict_ml:https://colab.research.google.com/drive/1TMiUoJLzdgqOZhhhsK2ZNzWoz8UI41TP?usp=sharing
+
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 SPHINX documentation:
