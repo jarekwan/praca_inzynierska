@@ -35,7 +35,7 @@
 
 14. create_traditional_model: https://colab.research.google.com/drive/1Lz6Azw4pHr6C4sH7EumHbGZ6pQ1y1qW2?usp=sharing
 
-15. create_ml_model_ui: https://drive.google.com/file/d/1RyIKP-Cxzv9BUGYM9nKJPP8M60_CoDGu/view?usp=sharing
+15. create_ml_model_ui: https://colab.research.google.com/drive/1pyDBwZ21bWl2tzxeRvt2J8nUC027tFFA?usp=sharing
 
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
