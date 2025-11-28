@@ -33,7 +33,7 @@
 
 13. split_time: https://colab.research.google.com/drive/1mEqVNvyDMUiC63AKcYHiCQD_4WCFW_nl?usp=sharing
 
-14. create_traditional_model: https://colab.research.google.com/drive/1Lz6Azw4pHr6C4sH7EumHbGZ6pQ1y1qW2?usp=sharing
+14. create_traditional_model_ui: https://colab.research.google.com/drive/1Lz6Azw4pHr6C4sH7EumHbGZ6pQ1y1qW2?usp=sharing
 
 15. create_ml_model_ui: https://colab.research.google.com/drive/1pyDBwZ21bWl2tzxeRvt2J8nUC027tFFA?usp=sharing
 
