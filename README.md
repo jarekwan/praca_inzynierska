@@ -43,6 +43,8 @@
 
 18. train_traditional:https://colab.research.google.com/drive/1SrQ19tx3_-zRPnkTZR5134Zv_vPAzGHt?usp=sharing
 
+19. predict_traditional: https://colab.research.google.com/drive/1w-dR2n50DbOWc4uHrNmTHO55JkRAr8rO?usp=sharing
+
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 SPHINX documentation:
