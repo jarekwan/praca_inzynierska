@@ -47,6 +47,8 @@
 
 20. evaluate_model: https://colab.research.google.com/drive/1gDEXQCjs9kCEmN2XUQc452JUG0S6R-P4?usp=sharing
 
+21. compare_all: https://colab.research.google.com/drive/1YgPDIMfMqEnKKxC8oW2b36CPC1IwtVbo?usp=sharing
+
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 SPHINX documentation:
