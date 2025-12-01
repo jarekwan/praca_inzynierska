@@ -45,6 +45,8 @@
 
 19. predict_traditional: https://colab.research.google.com/drive/1w-dR2n50DbOWc4uHrNmTHO55JkRAr8rO?usp=sharing
 
+20. evaluate_model: https://colab.research.google.com/drive/1gDEXQCjs9kCEmN2XUQc452JUG0S6R-P4?usp=sharing
+
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 SPHINX documentation:
