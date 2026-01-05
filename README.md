@@ -49,6 +49,8 @@
 
 21. compare_all: https://colab.research.google.com/drive/1YgPDIMfMqEnKKxC8oW2b36CPC1IwtVbo?usp=sharing
 
+22. merge_predictions: https://drive.google.com/drive/folders/1Ga-4R4Nhohw9Uz1RCH6lbA8oVmlHOxKF?usp=sharing
+
 Last: main:https://colab.research.google.com/drive/1CgRiU9IVoPEc48LNgI_T9GsWo9hduqA4?usp=sharing
 
 SPHINX documentation:
