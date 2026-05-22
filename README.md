@@ -1,7 +1,6 @@
 ## Zawartość repezytorium
 
 
--  [LISTA FUNKCJA EN.txt](./LISTA%20FUNKCJA%20EN.txt) — opis funkcji systemu (wersja EN)
 - [requirements.txt](./requirements.txt) — lista niezbędnych bibliotek do uruchomienia projektu
 
 ## google drive
@@ -77,10 +76,28 @@ Repozytorium zawiera notebooki użyte w pracy inżynierskiej dotyczącej prognoz
 - trenowanie i predykcja modeli,
 - porównanie wyników (MAE, RMSE, MAPE, R²).
 
-## Modele ML
-- SVR
+## Modele tradycyjne
+- Naive Forecast
+- Moving Average
+- Simple Exponential Smoothing (SES)
+- ARIMA
+
+## Modele uczenia maszynowego
+- Linear Regression
+- Ridge Regression
+- Lasso Regression
 - Random Forest
-- K-Neighbors
+- Support Vector Regression (SVR)
+- XGBoost
+- MLP (Multilayer Perceptron)
+
+## Dodatkowe funkcjonalności
+- prognozowanie statyczne
+- prognozowanie kroczące
+- grid search
+- random search
+- symulacja kontroli zapasów
+- analiza RMSE / MAE / MAPE / R²
 
 ## Środowisko
 Projekt uruchamiany w Google Colab z użyciem Google Drive (`/content/drive/MyDrive/ml_project`).
